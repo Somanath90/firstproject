@@ -47,7 +47,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_landingtoraw_order",
+						"referenceName": "ds_landing_orders",
 						"type": "DatasetReference"
 					}
 				],

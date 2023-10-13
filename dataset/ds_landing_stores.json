@@ -5,6 +5,9 @@
 			"referenceName": "ls_sl_orders",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Landing01"
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
