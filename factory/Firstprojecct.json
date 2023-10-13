@@ -1,0 +1,9 @@
+{
+	"name": "Firstprojecct",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fb20b8cf-56c4-4ccb-80d6-5d93d0abdc3b",
+		"tenantId": "b73ba017-09a3-4ce7-bc66-e40c07cae308"
+	}
+}
