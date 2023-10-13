@@ -63,6 +63,9 @@
 					"referenceName": "ls_sl_orders",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "Landing01"
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
@@ -104,6 +107,34 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ds_landing_orders')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sl_orders",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Landing01"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "orders.parquet",
+						"container": "landinng"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sl_orders')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/ds_landing_products')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -111,6 +142,9 @@
 				"linkedServiceName": {
 					"referenceName": "ls_sl_orders",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Landing01"
 				},
 				"annotations": [],
 				"type": "Json",
@@ -136,6 +170,9 @@
 					"referenceName": "ls_sl_orders",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "Landing01"
+				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
@@ -152,13 +189,16 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_landingcustomersto_raw')]",
+			"name": "[concat(parameters('factoryName'), '/ds_landingcustomers')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_sl_orders",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Landing01"
 				},
 				"annotations": [],
 				"type": "Json",
@@ -176,31 +216,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_landingtoraw_order')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_sl_orders",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Parquet",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"fileName": "orders.parquet",
-						"container": "landinng"
-					},
-					"compressionCodec": "snappy"
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_sl_orders')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ds_landingtoraw_products')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -208,6 +223,9 @@
 				"linkedServiceName": {
 					"referenceName": "ls_dl_orders",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Landingtoraw"
 				},
 				"annotations": [],
 				"type": "Json",
@@ -233,6 +251,9 @@
 					"referenceName": "ls_dl_orders",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "Landingtoraw"
+				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
@@ -257,6 +278,9 @@
 					"referenceName": "ls_dl_orders",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "Landingtoraw"
+				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
@@ -280,6 +304,9 @@
 				"linkedServiceName": {
 					"referenceName": "ls_dl_orders",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Landingtoraw"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -308,6 +335,9 @@
 				"linkedServiceName": {
 					"referenceName": "ls_dl_orders",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Landingtoraw"
 				},
 				"annotations": [],
 				"type": "Parquet",
@@ -453,7 +483,7 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "ds_landingtoraw_order",
+								"referenceName": "ds_landing_orders",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -473,7 +503,7 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_landingtoraw_order')]",
+				"[concat(variables('factoryId'), '/datasets/ds_landing_orders')]",
 				"[concat(variables('factoryId'), '/datasets/dsraw_orders')]"
 			]
 		},
