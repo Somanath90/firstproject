@@ -89,6 +89,62 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "pl_orderslandingtoraw",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_orderslandingtoraw",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "pl_productslandingtoraw",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "pl_productslandingtoraw",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "plcustomers_landingtoraw",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "plcustomers_landingtoraw",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "plstores_landingtoraw",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "plstores_landingtoraw",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
 					}
 				],
 				"policy": {
@@ -98,7 +154,11 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_landing')]",
-				"[concat(variables('factoryId'), '/datasets/dsraw_orderitems')]"
+				"[concat(variables('factoryId'), '/datasets/dsraw_orderitems')]",
+				"[concat(variables('factoryId'), '/pipelines/pl_orderslandingtoraw')]",
+				"[concat(variables('factoryId'), '/pipelines/pl_productslandingtoraw')]",
+				"[concat(variables('factoryId'), '/pipelines/plcustomers_landingtoraw')]",
+				"[concat(variables('factoryId'), '/pipelines/plstores_landingtoraw')]"
 			]
 		},
 		{
