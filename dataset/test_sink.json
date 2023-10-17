@@ -1,25 +1,16 @@
 {
-	"name": "test_source",
+	"name": "test_sink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_dl_orders",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"psourcefilename": {
-				"type": "String"
-			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().psourcefilename",
-					"type": "Expression"
-				},
-				"folderPath": "source",
+				"folderPath": "sink",
 				"fileSystem": "test"
 			},
 			"columnDelimiter": ",",
@@ -27,6 +18,27 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "ORDER_ID",
+				"type": "String"
+			},
+			{
+				"name": "LINE_ITEM_ID",
+				"type": "String"
+			},
+			{
+				"name": "PRODUCT_ID",
+				"type": "String"
+			},
+			{
+				"name": "UNIT_PRICE",
+				"type": "String"
+			},
+			{
+				"name": "QUANTITY",
+				"type": "String"
+			}
+		]
 	}
 }
