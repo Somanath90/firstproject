@@ -1,0 +1,32 @@
+{
+	"name": "df_cleansedtostructure",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_cleansed",
+						"type": "DatasetReference"
+					},
+					"name": "ordersourcestructure"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          ORDER_ID as integer,",
+				"          ORDER_STATUS as string,",
+				"          CUSTOMER_ID as integer,",
+				"          STORE_ID as integer,",
+				"          UPDATED_TIMESTAMP as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> ordersourcestructure"
+			]
+		}
+	}
+}
