@@ -5,12 +5,16 @@
 			"referenceName": "ls_dl_orders",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"pSinkfolderPath": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "sink",
 				"fileSystem": "test"
 			},
 			"columnDelimiter": ",",
